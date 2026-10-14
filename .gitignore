@@ -1,0 +1,39 @@
+# ── Sensitive project files ──
+includes/config.php
+.env
+.env.local
+
+# ── User uploads ──
+uploads/
+assets/uploads/
+
+# ── Logs ──
+*.log
+logs/
+
+# ── OS files ──
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── IDE / Editor ──
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# ── Backups ──
+*.bak
+*.old
+*.zip
+*.tar.gz
+*.sql.gz
+
+# ── Dependencies ──
+node_modules/
+vendor/
+composer.lock
+
+# ── Build artifacts ──
+dist/
+build/
