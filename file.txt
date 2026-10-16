@@ -1,0 +1,81 @@
+market/
+│
+├── index.php                          (Redirects to home.php)
+├── pages/
+│   ├── home.php
+│   ├── about.php
+│   ├── services.php
+│   ├── work.php
+│   ├── blog.php
+│   ├── contact.php
+│   └── faq.php
+│
+├── auth/                              <-- NEW FOLDER FOR ALL LOGIN PAGES
+│   ├── login.php                      (Login page)
+│   ├── register.php                   (Registration page)
+│   ├── verify.php                     (Email verification page)
+│   ├── dashboard.php                  (User dashboard after login)
+│   ├── logout.php                     (Logout handler)
+│   ├── forgot-password.php            (Forgot password page)
+│   └── reset-password.php 
+│
+├── includes/
+│   ├── navbar.php                     (Navbar - pure PHP/HTML, no CSS/JS)
+│   ├── footer.php                     (Footer - pure PHP/HTML, no CSS/JS)
+│   ├── config.php                     (Database & app configuration)
+│   ├── db.php                         (Database connection)
+│   ├── functions.php                  (All helper functions)
+│   └── session.php                    (Session management)
+│
+├── assets/
+│   ├── images/
+│   │   ├── bg1.png                    (Background image)
+│   │   ├── logo1.png                  (Logo)
+│   │   ├── favicon.ico                (Favicon)
+│   │   └── (Other images)
+│   │
+│   └── uploads/
+│       ├── profiles/
+│       ├── work/
+│       └── blog/
+│
+├── admin/
+│   ├── index.php                      (Admin dashboard - self-contained)
+│   ├── login.php                      (Admin login - self-contained)
+│   ├── users.php                      (Manage users - self-contained)
+│   ├── services.php                   (Manage services - self-contained)
+│   ├── work.php                       (Manage portfolio - self-contained)
+│   ├── blog.php                       (Manage blog - self-contained)
+│   ├── messages.php                   (View messages - self-contained)
+│   └── includes/
+│       ├── navbar.php
+│       ├── footer.php
+│       ├── config.php
+│       └── functions.php
+│
+├── api/
+│   ├── send-verification.php          (AJAX endpoint - pure PHP)
+│   ├── verify-code.php                (AJAX endpoint - pure PHP)
+│   ├── register.php                   (AJAX endpoint - pure PHP)
+│   ├── login.php                      (AJAX endpoint - pure PHP)
+│   └── contact.php                    (AJAX endpoint - pure PHP)
+│
+├── vendor/
+│   └── (Composer packages - Brevo SDK, etc.)
+│
+├── config/
+│   ├── database.php                   (Database config)
+│   └── email.php                      (Brevo email config)
+│
+├── logs/
+│   ├── error.log
+│   └── email.log
+│
+├── .htaccess
+├── robots.txt
+└── sitemap.xml
+
+include("../includes/config.php");
+include("../includes/db.php");
+include("../includes/functions.php");
+include("../includes/session.php");
