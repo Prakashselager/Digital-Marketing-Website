@@ -45,3 +45,50 @@ full-service brand activation, event management, and marketing agency.
 ---
 
 ## 📂 Project Structure
+brandeve-website/
+│
+├── admin/ # Admin panel (login-protected)
+│ ├── index.php # Dashboard with enquiry statistics
+│ ├── admins.php # Manage admin accounts
+│ ├── users.php # Manage registered users
+│ ├── deleted.php # Restore or permanently delete enquiries
+│ ├── settings.php # Email, add admin, change password
+│ ├── login.php # Admin login page
+│ └── logout.php # Ends the admin session
+│
+├── includes/
+│ ├── config.sample.php # Template config — copy to config.php
+│ ├── navbar.php # Shared header / navigation
+│ └── footer.php # Shared footer
+│
+├── pages/
+│ ├── home.php # Homepage (main landing)
+│ ├── about.php # About the company
+│ ├── contact.php # Contact form (saves to DB + sends email)
+│ ├── faq.php # Frequently asked questions
+│ ├── portfolio.php # Project showcase with lightbox
+│ └── linkServices/ # Individual service detail pages
+│ ├── branding.php
+│ ├── digital-marketing.php
+│ ├── events.php
+│ ├── exhibition.php
+│ ├── launch.php
+│ ├── marketing.php
+│ ├── promotion.php
+│ ├── shows.php
+│ └── wedding.php
+│
+├── assets/
+│ ├── css/ # Stylesheets
+│ ├── js/ # JavaScript files
+│ └── images/
+│ ├── brands/ # Client / trust-bar logos
+│ ├── portfolio/ # Portfolio project images
+│ └── logos.png # Site favicon
+│
+├── database/
+│ └── db.sql # Database schema (tables + default admin)
+│
+├── .gitignore # Files Git should never track
+├── README.md # This file
+└── LICENSE # MIT License
