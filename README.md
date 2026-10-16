@@ -45,50 +45,66 @@ full-service brand activation, event management, and marketing agency.
 ---
 
 ## 📂 Project Structure
+
+```
 brandeve-website/
 │
-├── admin/ # Admin panel (login-protected)
-│ ├── index.php # Dashboard with enquiry statistics
-│ ├── admins.php # Manage admin accounts
-│ ├── users.php # Manage registered users
-│ ├── deleted.php # Restore or permanently delete enquiries
-│ ├── settings.php # Email, add admin, change password
-│ ├── login.php # Admin login page
-│ └── logout.php # Ends the admin session
+├── admin/                      # Admin panel (login-protected)
+│   ├── index.php               # Dashboard with enquiry statistics
+│   ├── admins.php              # Manage admin accounts
+│   ├── users.php               # Manage registered users
+│   ├── deleted.php             # Restore or permanently delete enquiries
+│   ├── settings.php            # Email, add admin, change password
+│   ├── login.php               # Admin login page
+│   └── logout.php              # Ends the admin session
 │
 ├── includes/
-│ ├── config.sample.php # Template config — copy to config.php
-│ ├── navbar.php # Shared header / navigation
-│ └── footer.php # Shared footer
+│   ├── config.sample.php       # Template config — copy to config.php
+│   ├── navbar.php              # Shared header / navigation
+│   └── footer.php              # Shared footer
 │
 ├── pages/
-│ ├── home.php # Homepage (main landing)
-│ ├── about.php # About the company
-│ ├── contact.php # Contact form (saves to DB + sends email)
-│ ├── faq.php # Frequently asked questions
-│ ├── portfolio.php # Project showcase with lightbox
-│ └── linkServices/ # Individual service detail pages
-│ ├── branding.php
-│ ├── digital-marketing.php
-│ ├── events.php
-│ ├── exhibition.php
-│ ├── launch.php
-│ ├── marketing.php
-│ ├── promotion.php
-│ ├── shows.php
-│ └── wedding.php
+│   ├── home.php                # Homepage (main landing)
+│   ├── about.php               # About the company
+│   ├── contact.php             # Contact form (saves to DB + sends email)
+│   ├── faq.php                 # Frequently asked questions
+│   ├── portfolio.php           # Project showcase with lightbox
+│   └── linkServices/           # Individual service detail pages
+│       ├── branding.php
+│       ├── digital-marketing.php
+│       ├── events.php
+│       ├── exhibition.php
+│       ├── launch.php
+│       ├── marketing.php
+│       ├── promotion.php
+│       ├── shows.php
+│       └── wedding.php
 │
 ├── assets/
-│ ├── css/ # Stylesheets
-│ ├── js/ # JavaScript files
-│ └── images/
-│ ├── brands/ # Client / trust-bar logos
-│ ├── portfolio/ # Portfolio project images
-│ └── logos.png # Site favicon
+│   ├── css/                    # Stylesheets
+│   ├── js/                     # JavaScript files
+│   └── images/
+│       ├── brands/             # Client / trust-bar logos
+│       ├── portfolio/          # Portfolio project images
+│       └── logos.png           # Site favicon
 │
 ├── database/
-│ └── db.sql # Database schema (tables + default admin)
+│   └── db.sql                  # Database schema (tables + default admin)
 │
-├── .gitignore # Files Git should never track
-├── README.md # This file
-└── LICENSE # MIT License
+├── .gitignore                  # Files Git should never track
+├── README.md                   # This file
+└── LICENSE                     # MIT License
+```
+
+### Folder Notes
+
+| Folder / File | Purpose |
+|---|---|
+| `admin/` | Protected area — session-based login required |
+| `includes/config.php` | **NOT committed** — holds real DB & Brevo credentials |
+| `includes/config.sample.php` | Safe template — copy to `config.php` and fill in your own values |
+| `pages/` | Public-facing pages that visitors browse |
+| `pages/linkServices/` | Deep-dive pages for each individual service offered |
+| `assets/images/brands/` | Trust-bar logos shown in the marquee |
+| `assets/images/portfolio/` | Images for the portfolio grid |
+| `database/db.sql` | Full SQL dump — import into MySQL to set up the DB |
