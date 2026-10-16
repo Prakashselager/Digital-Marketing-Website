@@ -19,7 +19,7 @@ full-service brand activation, event management, and marketing agency.
   Launches, Shows & Concerts, Weddings
 - 💼 Portfolio showcase with interactive hover cards and lightbox
 - 💬 Testimonials section
-- 📞 Contact form with database storage
+- 📞 Contact form with database storage and email notifications
 - 📱 Fully responsive layout (mobile, tablet, desktop)
 
 ### Admin Panel
@@ -40,69 +40,132 @@ full-service brand activation, event management, and marketing agency.
 | Database | MySQL 8.x |
 | Frontend | HTML5, CSS3, Vanilla JavaScript |
 | Icons | Font Awesome 6.5 |
+| Email | Brevo (Sendinblue) SMTP + API |
 | Fonts | System font stack (Segoe UI, Tahoma, Verdana) |
 
----
 ---
 
 ## 📦 Dependencies
 
-This project uses **Composer** to manage PHP dependencies (like Brevo SDK,
+This project uses **Composer** to manage PHP dependencies (like the Brevo SDK,
 PHPMailer, etc.).
 
 The `vendor/` folder is **not included** in this repository because:
+
 - It can be several hundred MB
 - It's auto-generated from `composer.json`
 - It's platform-dependent (different PHP versions may need different builds)
 
-You must install dependencies yourself after cloning — see the next section.
+You must install dependencies yourself after cloning — see the
+**Installation** section below.
+
+> **Note:** If you don't have Composer installed, get it here:
+> https://getcomposer.org/download/
 
 ---
 
 ## 🚀 Installation
 
 ### 1. Clone the repository
+
 ```bash
 git clone https://github.com/YOUR-USERNAME/brandeve-website.git
 cd brandeve-website
+```
 
+### 2. Install PHP dependencies
+
+```bash
+composer install
+```
+
+This reads `composer.json` and `composer.lock`, downloads the exact package
+versions, and generates the `vendor/` folder. Expected output:
+
+```
+Loading composer repositories with package information
+Installing dependencies from lock file
+Package operations: 12 installs, 0 updates, 0 removals
+  - Installing guzzlehttp/guzzle (7.8.0): Extracting archive
+  - Installing brevo/brevo-php (1.0.0): Extracting archive
+  ...
+Generating autoload files
+```
+
+### 3. Set up the database
+
+- Open **phpMyAdmin** or MySQL CLI
+- Create a new database (e.g. `brandeve_db`)
+- Import `database/db.sql`
+
+### 4. Configure the connection
+
+Copy the sample config:
+
+```bash
+cp includes/config.sample.php includes/config.php
+```
+
+Then edit `includes/config.php` and fill in your own values:
+
+```php
+<?php
+define('BASE_URL', '/');
+define('DB_HOST', 'localhost');
+define('DB_USER', 'your_db_username');
+define('DB_PASS', 'your_db_password');
+define('DB_NAME', 'your_db_name');
+define('ADMIN_EMAIL', 'admin@example.com');
+define('BREVO_SMTP_HOST', 'smtp-relay.brevo.com');
+define('BREVO_SMTP_PORT', 587);
+define('BREVO_SMTP_USER', 'your_brevo_login');
+define('BREVO_SMTP_PASS', 'your_brevo_smtp_key');
+define('BREVO_SMTP_SECURE', 'tls');
+define('BREVO_API_KEY', 'your_brevo_api_key');
+define('SITE_NAME', 'BrandEve Solutions');
+define('SITE_URL', 'http://localhost/');
+?>
+```
+
+### 5. Run locally
+
+- Place the project inside your web server root
+  (`htdocs/` for XAMPP, `www/` for WAMP)
+- Visit: `http://localhost/brandeve-website/`
+- Admin panel: `http://localhost/brandeve-website/admin/`
+
+**Default admin credentials — change immediately after first login:**
+
+| Username | Password |
+|---|---|
+| `admin` | `admin123` |
 
 ---
-
-## 🧠 The Key Idea — Why This Is Needed
-
-Think of `composer.json` as a **shopping list** and `composer install` as the **grocery run**:
-
-| File/Folder | What it is | In repo? |
-|---|---|---|
-| `composer.json` | List of packages needed | ✅ Yes |
-| `composer.lock` | Exact version pins | ✅ Yes |
-| `vendor/` | The actual downloaded packages | ❌ No |
-| `vendor/autoload.php` | Auto-loader that ties everything together | ❌ No |
-
-When a user clones your repo, they get the **shopping list** but not the **groceries**. They run `composer install` to fill in the `vendor/` folder themselves.
-
----
-
-## 📋 Make Sure `vendor/` Is in `.gitignore`
-
-Open your `.gitignore` and confirm it contains:
-
-```gitignore
-# Composer
-/vendor/
-composer.phar
 
 ## ⚡ Quick Start
 
+For those who just want the commands without the details:
+
 ```bash
+# 1. Clone and enter the project
 git clone https://github.com/YOUR-USERNAME/brandeve-website.git
 cd brandeve-website
-composer install               # install PHP dependencies
-cp includes/config.sample.php includes/config.php   # create your config
-# → edit includes/config.php with your DB credentials
-# → import database/db.sql into MySQL
-# → open in browser: http://localhost/brandeve-website/
+
+# 2. Install PHP dependencies
+composer install
+
+# 3. Create your config from the sample
+cp includes/config.sample.php includes/config.php
+# → open includes/config.php and fill in your DB credentials
+
+# 4. Import the database
+# → Open phpMyAdmin, create `brandeve_db`, import `database/db.sql`
+
+# 5. Open in browser
+# → http://localhost/brandeve-website/
+```
+
+---
 
 ## 📂 Project Structure
 
@@ -168,3 +231,85 @@ brandeve-website/
 | `assets/images/brands/` | Trust-bar logos shown in the marquee |
 | `assets/images/portfolio/` | Images for the portfolio grid |
 | `database/db.sql` | Full SQL dump — import into MySQL to set up the DB |
+
+---
+
+## 🔒 Security Notes
+
+- `includes/config.php` is **not committed** — secrets stay local
+- SQL queries use **prepared statements** to prevent injection
+- All user output is escaped with `htmlspecialchars()`
+- Passwords are hashed with **`password_hash()`** (bcrypt)
+- Admin area protected by session-based authentication
+- Brevo API and SMTP keys kept out of version control
+
+### What to Verify in `.gitignore`
+
+Make sure your `.gitignore` contains these lines:
+
+```gitignore
+# Composer
+/vendor/
+composer.phar
+
+# Secrets
+includes/config.php
+.env
+.env.local
+
+# Uploads
+uploads/
+assets/uploads/
+```
+
+---
+
+## 🎨 Design Highlights
+
+- Modern two-color alternation (cream + forest green theme)
+- Aurora gradient backgrounds with drifting color blobs
+- Glass-morphism cards with backdrop blur
+- Scroll-triggered reveal animations (left / right / up)
+- Smooth hover states using GPU-composited transforms
+- Fully accessible — ARIA labels, keyboard navigation,
+  reduced-motion support
+
+---
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch:
+   ```bash
+   git checkout -b feature/new-feature
+   ```
+3. Commit your changes:
+   ```bash
+   git commit -m "Add new feature"
+   ```
+4. Push to the branch:
+   ```bash
+   git push origin feature/new-feature
+   ```
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License** — see the
+[LICENSE](LICENSE) file for details.
+
+---
+
+## 📬 Contact
+
+**BrandEve Solutions**
+
+- 📧 Email: hello@brandeve.com
+- 📞 Phone: +91 XXXXXXXXXX
+- 📍 Location: Bangalore, India
+
+---
+
+Made with ❤️ by the BrandEve Team
