@@ -43,6 +43,66 @@ full-service brand activation, event management, and marketing agency.
 | Fonts | System font stack (Segoe UI, Tahoma, Verdana) |
 
 ---
+---
+
+## 📦 Dependencies
+
+This project uses **Composer** to manage PHP dependencies (like Brevo SDK,
+PHPMailer, etc.).
+
+The `vendor/` folder is **not included** in this repository because:
+- It can be several hundred MB
+- It's auto-generated from `composer.json`
+- It's platform-dependent (different PHP versions may need different builds)
+
+You must install dependencies yourself after cloning — see the next section.
+
+---
+
+## 🚀 Installation
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/YOUR-USERNAME/brandeve-website.git
+cd brandeve-website
+
+
+---
+
+## 🧠 The Key Idea — Why This Is Needed
+
+Think of `composer.json` as a **shopping list** and `composer install` as the **grocery run**:
+
+| File/Folder | What it is | In repo? |
+|---|---|---|
+| `composer.json` | List of packages needed | ✅ Yes |
+| `composer.lock` | Exact version pins | ✅ Yes |
+| `vendor/` | The actual downloaded packages | ❌ No |
+| `vendor/autoload.php` | Auto-loader that ties everything together | ❌ No |
+
+When a user clones your repo, they get the **shopping list** but not the **groceries**. They run `composer install` to fill in the `vendor/` folder themselves.
+
+---
+
+## 📋 Make Sure `vendor/` Is in `.gitignore`
+
+Open your `.gitignore` and confirm it contains:
+
+```gitignore
+# Composer
+/vendor/
+composer.phar
+
+## ⚡ Quick Start
+
+```bash
+git clone https://github.com/YOUR-USERNAME/brandeve-website.git
+cd brandeve-website
+composer install               # install PHP dependencies
+cp includes/config.sample.php includes/config.php   # create your config
+# → edit includes/config.php with your DB credentials
+# → import database/db.sql into MySQL
+# → open in browser: http://localhost/brandeve-website/
 
 ## 📂 Project Structure
 
