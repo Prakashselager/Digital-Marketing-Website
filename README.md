@@ -307,8 +307,8 @@ This project is licensed under the **MIT License** — see the
 
 **BrandEve Solutions**
 
-- 📧 Email: hello@brandeve.com
-- 📞 Phone: +91 XXXXXXXXXX
+- 📧 Email: prakashselager@gmail.com
+- 📞 Phone: +91 8310133631
 - 📍 Location: Bangalore, India
 
 ---
@@ -318,8 +318,9 @@ Made with ❤️ by the BrandEve Team
 ---
 
 ##Check the status
-![PHP]()
-![JAVA]()
+
+![PHP](https://img.shields.io/badge/PHP-8.x-777BB4?logo=php&logoColor=white)
+![JAVA](https://img.shields.io/badge/PHP-8.x-777BB4?logo=php&logoColor=white)
 
 - This is points.
 
