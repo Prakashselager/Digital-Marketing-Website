@@ -315,17 +315,3 @@ This project is licensed under the **MIT License** — see the
 
 Made with ❤️ by the BrandEve Team
 
----
-
-## Check the status
-
-![PHP](https://img.shields.io/badge/PHP-8.x-777BB4?logo=php&logoColor=white)
-![JAVA](https://img.shields.io/badge/PHP-8.x-777BB4?logo=php&logoColor=white)
-
-- This is points.
-
-| BOX | SIZE |
-|---|---|
-| LIKE | THIS |
-
-- Points can also write **like this** way.
