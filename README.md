@@ -318,12 +318,13 @@ Made with ❤️ by the BrandEve Team
 ---
 
 ##Check the status
-![PHP]
-![JAVA]
+![PHP]()
+![JAVA]()
 
 - This is points.
 
 | BOX | SIZE |
+|---|---|
 | LIKE | THIS |
 
 - Points can also write **like this** way.
